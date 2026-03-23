@@ -74,6 +74,12 @@
       max-width: 100%;
     }
 
+    form label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+
     input,
     select,
     textarea {
@@ -180,8 +186,8 @@
         <label>Tu Nombre:</label>
         <input type="text" name="nombre" size="30">
 
-        <label>Tu peso en KG para saber si eres apto para usar esta pagina:</label><br>
-        <input type="text" name="clave" size="8">
+        <label for="peso">Tu peso en KG para saber si eres apto para usar esta pagina:</label>
+        <input id="peso" type="text" name="clave" size="8">
 
         <p>Preferencia sexual:</p>
         <div class="fila-opciones">
