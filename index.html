@@ -83,6 +83,24 @@
       margin-bottom: 6px;
     }
 
+    .datos-con-imagen {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .datos-campos {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .imagen-lateral {
+      width: 170px;
+      border-radius: 10px;
+      border: 2px solid #cbd5e1;
+    }
+
     input,
     select,
     textarea {
@@ -175,6 +193,16 @@
     tr:last-child td {
       border-bottom: none;
     }
+
+    @media (max-width: 700px) {
+      .datos-con-imagen {
+        flex-direction: column;
+      }
+
+      .imagen-lateral {
+        width: min(100%, 220px);
+      }
+    }
   </style>
 </head>
 
@@ -186,14 +214,20 @@
 
     <div class="centrado">
       <form id="encuesta-form">
-        <div class="campo">
-          <label for="nombre">Tu Nombre:</label>
-          <input id="nombre" type="text" name="nombre" size="30">
-        </div>
+        <div class="datos-con-imagen">
+          <div class="datos-campos">
+            <div class="campo">
+              <label for="nombre">Tu Nombre:</label>
+              <input id="nombre" type="text" name="nombre" size="30">
+            </div>
 
-        <div class="campo">
-          <label for="peso">Tu peso en KG para saber si eres apto para usar esta pagina:</label>
-          <input id="peso" type="text" name="clave" size="8">
+            <div class="campo">
+              <label for="peso">Tu peso en KG para saber si eres apto para usar esta pagina:</label>
+              <input id="peso" type="text" name="clave" size="8">
+            </div>
+          </div>
+
+          <img src="camote.jpg" class="imagen-lateral" alt="Imagen lateral">
         </div>
 
         <p>Preferencia sexual:</p>
