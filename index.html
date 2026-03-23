@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamred pandilla</title>
+  <style>
+    :root {
+      --fondo1: #fff8e7;
+      --fondo2: #ffe0b2;
+      --card: #ffffff;
+      --texto: #1f2937;
+      --azul: #0b57d0;
+      --rojo: #d93025;
+      --borde: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  color: var(--texto);
+  background-image: url("ESTOICO.jpg");
+  background-size: cover;        /* que cubra toda la pantalla */
+  background-position: center;   /* centrada */
+  background-repeat: no-repeat;  /* que no se repita */
+  background-attachment: fixed;  /* efecto fijo al hacer scroll */
+  min-height: 100vh;
+  padding: 24px;
+}
+    .contenedor {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 2px solid var(--borde);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    h1 {
+      margin-top: 0;
+      color: var(--azul);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+    }
+
+    h2 {
+      color: #374151;
+      margin-bottom: 10px;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px dashed #9ca3af;
+      margin: 20px 0;
+    }
+
+    .centrado {
+      text-align: center;
+    }
+
+    form {
+      background: #f9fafb;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 16px;
+      display: inline-block;
+      text-align: left;
+      max-width: 100%;
+    }
+
+    input, select, textarea {
+      margin-top: 6px;
+      margin-bottom: 10px;
+      border: 1px solid #9ca3af;
+      border-radius: 8px;
+      padding: 8px;
+      font-family: inherit;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: auto;
+      margin-right: 6px;
+    }
+
+    .fila-opciones {
+      margin: 8px 0 12px;
+    }
+
+    .botones {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .botones input[type="submit"],
+    .botones input[type="reset"] {
+      width: auto;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 10px 16px;
+      font-weight: bold;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .botones input[type="submit"] {
+      background: var(--azul);
+    }
+
+    .botones input[type="reset"] {
+      background: var(--rojo);
+    }
+
+    .botones input:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .imagen-principal {
+      display: block;
+      width: min(100%, 320px);
+      border-radius: 12px;
+      border: 2px solid #cbd5e1;
+      margin: 18px auto 20px;
+    }
+
+    a {
+      color: var(--azul);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--borde);
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tr:nth-child(odd) td {
+      background: #f9fafb;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Razones por las que la Diamred pandilla es la mejor.</h1>
+    <hr>
+    <h2>Fenrir es Gay</h2>
+
+    <div class="centrado">
+      <form id="encuesta-form">
+        <label>Tu Nombre:</label>
+        <input type="text" name="nombre" size="30">
+<center>
+        <label>Tu peso en KG para saber si eres apto para usar esta pagina:</label>
+        <input type="text" name="clave" size="8">
+</center>
+        <p>Preferencia sexual:</p>
+        <div class="fila-opciones">
+          <label><input type="checkbox" name="archivo" value="Manual">Hombre</label><br>
+          <label><input type="checkbox" name="archivo" value="Mapthis">Mujer</label><br>
+          <label><input type="checkbox" name="archivo" value="Help">Manes</label>
+        </div>
+
+        <p>Tu Edad:</p>
+        <div class="fila-opciones">
+          <label><input type="radio" name="edad" value="-20">Menos de 20 años</label><br>
+          <label><input type="radio" name="edad" value="20-40">Entre 20 y 40 años</label><br>
+          <label><input type="radio" name="edad" value="+40">Más de 200 años</label>
+        </div>
+
+        <input type="hidden" name="lugar" value="página personal">
+
+        <label>¿Cómo encontraste mi página?</label>
+        <select name="donde">
+          <option>De casualidad</option>
+          <option>Viste como la programaba</option>
+          <option>Sabes algo que yo no</option>
+          <option>Me la recomendaron</option>
+        </select>
+
+        <label>Tus comentarios:</label>
+        <textarea name="comentario" rows="5" cols="40"></textarea>
+
+        <div class="botones">
+          <input type="submit" value="Enviar">
+          <input type="reset" value="Borrar">
+        </div>
+      </form>
+    </div>
+
+    <img src="ola.jpg" class="imagen-principal" alt="Imagen">
+
+    <h2>Razones</h2>
+    <h2>Ordenadas en donde explico mi punto</h2>
+    <p>La diamred pandilla es la mejor, pero podria serlo aun mas</p>
+    <p>Aunque el malvado shiro tambien puede tener alto el colesterol</p>
+    <p>Estoy empezando mi proyecto el 20/03/26</p>
+    <p>Quiero verme completamente TryHard al yo poder programar autodidactamente esto asi mostrando mi superioridad intelectual</p>
+
+    <hr>
+
+    <div class="centrado">
+      <a href="https://www.facebook.com/israel.alvizar.7">Mi faceebook por si quieren ver a un guapo!!!</a>
+    </div>
+
+    <hr>
+
+    <h2>Top tierlist de gordos en NMF</h2>
+    <table>
+      <tr><td>Diamred 40KG de Little Cesar</td></tr>
+      <tr><td>Manes 40KG de Tortilla de harina</td></tr>
+      <tr><td>Darkus 32KG Gorditas de doña flor</td></tr>
+      <tr><td>Waifu 13KG De pura zurrada</td></tr>
+      <tr><td>Saber 12KG MC donals</td></tr>
+      <tr><td>Fenrir 5KG De monster</td></tr>
+    </table>
+  </div>
+  <script>
+    const DISCORD_WEBHOOK_URL = "PEGA_AQUI_TU_WEBHOOK_DE_DISCORD";
+
+    document.getElementById("encuesta-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.currentTarget;
+      const nombre = form.nombre.value.trim() || "No especificado";
+      const clave = form.clave.value.trim() || "No especificado";
+      const preferencias = Array.from(form.querySelectorAll('input[name="archivo"]:checked'))
+        .map((el) => el.nextSibling.textContent.trim())
+        .join(", ") || "No especificado";
+      const edad = form.querySelector('input[name="edad"]:checked')?.nextSibling.textContent.trim() || "No especificado";
+      const lugar = form.lugar.value || "página personal";
+      const donde = form.donde.value || "No especificado";
+      const comentario = form.comentario.value.trim() || "Sin comentarios";
+
+      const mensaje = [
+        "Nueva encuesta enviada:",
+        "Nombre: " + nombre,
+        "Peso (KG): " + clave,
+        "Preferencia sexual: " + preferencias,
+        "Edad: " + edad,
+        "Lugar: " + lugar,
+        "Como encontraste mi pagina: " + donde,
+        "Comentarios: " + comentario
+      ].join("\n");
+
+      if (!DISCORD_WEBHOOK_URL || DISCORD_WEBHOOK_URL === "PEGA_AQUI_TU_WEBHOOK_DE_DISCORD") {
+        alert("Falta pegar tu URL de webhook de Discord en el codigo.");
+        return;
+      }
+
+      try {
+        const resp = await fetch(DISCORD_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content: mensaje })
+        });
+
+        if (!resp.ok) {
+          throw new Error("Discord respondio con error " + resp.status);
+        }
+
+        alert("Encuesta enviada a Discord.");
+        form.reset();
+      } catch (err) {
+        alert("No se pudo enviar a Discord. Revisa tu webhook.");
+      }
+    });
+  </script>
+</body>
+</html>
