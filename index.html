@@ -246,7 +246,7 @@
   </div>
 
   <script>
-    const BACKEND_API_URL = "https://TU-BACKEND.onrender.com/api/encuesta";
+    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1485535391812685954/UKRiAG76dNRVEAX2z4IBas8Plu89zXb-lzvaP6B-rfqHB-XIJ0v4Q4j_I0mw947Yn5_g";
 
     document.getElementById("encuesta-form").addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -262,16 +262,31 @@
         comentario: form.comentario.value.trim() || "Sin comentarios"
       };
 
-      if (BACKEND_API_URL.includes("TU-BACKEND")) {
-        alert("Falta configurar BACKEND_API_URL con tu URL de Render.");
+      if (DISCORD_WEBHOOK_URL === "PEGA_AQUI_TU_WEBHOOK_DE_DISCORD") {
+        alert("Falta pegar tu webhook de Discord en el codigo.");
         return;
       }
 
+      const preferenciasTexto = payload.preferencias.length
+        ? payload.preferencias.join(", ")
+        : "No especificado";
+
+      const mensaje = [
+        "Nueva encuesta enviada:",
+        "Nombre: " + payload.nombre,
+        "Peso (KG): " + payload.clave,
+        "Preferencia sexual: " + preferenciasTexto,
+        "Edad: " + payload.edad,
+        "Lugar: " + payload.lugar,
+        "Como encontraste mi pagina: " + payload.donde,
+        "Comentarios: " + payload.comentario
+      ].join("\n");
+
       try {
-        const resp = await fetch(BACKEND_API_URL, {
+        const resp = await fetch(DISCORD_WEBHOOK_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ content: mensaje })
         });
 
         if (!resp.ok) {
@@ -281,7 +296,7 @@
         alert("Encuesta enviada a Discord.");
         form.reset();
       } catch (err) {
-        alert("No se pudo enviar. Revisa que el backend este activo.");
+        alert("No se pudo enviar. Revisa que tu webhook sea correcto.");
       }
     });
   </script>
