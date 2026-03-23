@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -19,18 +19,20 @@
     * {
       box-sizing: border-box;
     }
-body {
-  margin: 0;
-  font-family: "Trebuchet MS", Verdana, sans-serif;
-  color: var(--texto);
-  background-image: url("ESTOICO.jpg");
-  background-size: cover;        /* que cubra toda la pantalla */
-  background-position: center;   /* centrada */
-  background-repeat: no-repeat;  /* que no se repita */
-  background-attachment: fixed;  /* efecto fijo al hacer scroll */
-  min-height: 100vh;
-  padding: 24px;
-}
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Verdana, sans-serif;
+      color: var(--texto);
+      background-image: url("ESTOICO.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
     .contenedor {
       max-width: 980px;
       margin: 0 auto;
@@ -72,7 +74,9 @@ body {
       max-width: 100%;
     }
 
-    input, select, textarea {
+    input,
+    select,
+    textarea {
       margin-top: 6px;
       margin-bottom: 10px;
       border: 1px solid #9ca3af;
@@ -164,6 +168,7 @@ body {
     }
   </style>
 </head>
+
 <body>
   <div class="contenedor">
     <h1>Razones por las que la Diamred pandilla es la mejor.</h1>
@@ -174,27 +179,27 @@ body {
       <form id="encuesta-form">
         <label>Tu Nombre:</label>
         <input type="text" name="nombre" size="30">
-<center>
+
         <label>Tu peso en KG para saber si eres apto para usar esta pagina:</label>
         <input type="text" name="clave" size="8">
-</center>
+
         <p>Preferencia sexual:</p>
         <div class="fila-opciones">
-          <label><input type="checkbox" name="archivo" value="Manual">Hombre</label><br>
-          <label><input type="checkbox" name="archivo" value="Mapthis">Mujer</label><br>
-          <label><input type="checkbox" name="archivo" value="Help">Manes</label>
+          <label><input type="checkbox" name="archivo" value="Hombre">Hombre</label><br>
+          <label><input type="checkbox" name="archivo" value="Mujer">Mujer</label><br>
+          <label><input type="checkbox" name="archivo" value="Manes">Manes</label>
         </div>
 
         <p>Tu Edad:</p>
         <div class="fila-opciones">
-          <label><input type="radio" name="edad" value="-20">Menos de 20 años</label><br>
-          <label><input type="radio" name="edad" value="20-40">Entre 20 y 40 años</label><br>
-          <label><input type="radio" name="edad" value="+40">Más de 200 años</label>
+          <label><input type="radio" name="edad" value="Menos de 20 anios">Menos de 20 años</label><br>
+          <label><input type="radio" name="edad" value="Entre 20 y 40 anios">Entre 20 y 40 años</label><br>
+          <label><input type="radio" name="edad" value="Mas de 200 anios">Más de 200 años</label>
         </div>
 
-        <input type="hidden" name="lugar" value="página personal">
+        <input type="hidden" name="lugar" value="pagina personal">
 
-        <label>¿Cómo encontraste mi página?</label>
+        <label>¿Como encontraste mi pagina?</label>
         <select name="donde">
           <option>De casualidad</option>
           <option>Viste como la programaba</option>
@@ -239,56 +244,47 @@ body {
       <tr><td>Fenrir 5KG De monster</td></tr>
     </table>
   </div>
+
   <script>
-    const DISCORD_WEBHOOK_URL = "PEGA_AQUI_TU_WEBHOOK_DE_DISCORD";
+    const BACKEND_API_URL = "https://TU-BACKEND.onrender.com/api/encuesta";
 
     document.getElementById("encuesta-form").addEventListener("submit", async function (e) {
       e.preventDefault();
 
       const form = e.currentTarget;
-      const nombre = form.nombre.value.trim() || "No especificado";
-      const clave = form.clave.value.trim() || "No especificado";
-      const preferencias = Array.from(form.querySelectorAll('input[name="archivo"]:checked'))
-        .map((el) => el.nextSibling.textContent.trim())
-        .join(", ") || "No especificado";
-      const edad = form.querySelector('input[name="edad"]:checked')?.nextSibling.textContent.trim() || "No especificado";
-      const lugar = form.lugar.value || "página personal";
-      const donde = form.donde.value || "No especificado";
-      const comentario = form.comentario.value.trim() || "Sin comentarios";
+      const payload = {
+        nombre: form.nombre.value.trim() || "No especificado",
+        clave: form.clave.value.trim() || "No especificado",
+        preferencias: Array.from(form.querySelectorAll('input[name="archivo"]:checked')).map((el) => el.value),
+        edad: form.querySelector('input[name="edad"]:checked')?.value || "No especificado",
+        lugar: form.lugar.value || "pagina personal",
+        donde: form.donde.value || "No especificado",
+        comentario: form.comentario.value.trim() || "Sin comentarios"
+      };
 
-      const mensaje = [
-        "Nueva encuesta enviada:",
-        "Nombre: " + nombre,
-        "Peso (KG): " + clave,
-        "Preferencia sexual: " + preferencias,
-        "Edad: " + edad,
-        "Lugar: " + lugar,
-        "Como encontraste mi pagina: " + donde,
-        "Comentarios: " + comentario
-      ].join("\n");
-
-      if (!DISCORD_WEBHOOK_URL || DISCORD_WEBHOOK_URL === "PEGA_AQUI_TU_WEBHOOK_DE_DISCORD") {
-        alert("Falta pegar tu URL de webhook de Discord en el codigo.");
+      if (BACKEND_API_URL.includes("TU-BACKEND")) {
+        alert("Falta configurar BACKEND_API_URL con tu URL de Render.");
         return;
       }
 
       try {
-        const resp = await fetch(DISCORD_WEBHOOK_URL, {
+        const resp = await fetch(BACKEND_API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content: mensaje })
+          body: JSON.stringify(payload)
         });
 
         if (!resp.ok) {
-          throw new Error("Discord respondio con error " + resp.status);
+          throw new Error("Error al enviar");
         }
 
         alert("Encuesta enviada a Discord.");
         form.reset();
       } catch (err) {
-        alert("No se pudo enviar a Discord. Revisa tu webhook.");
+        alert("No se pudo enviar. Revisa que el backend este activo.");
       }
     });
   </script>
 </body>
+
 </html>
