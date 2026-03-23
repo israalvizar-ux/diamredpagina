@@ -74,9 +74,12 @@
       max-width: 100%;
     }
 
-    form label {
+    .campo {
+      margin-bottom: 14px;
+    }
+
+    .campo > label {
       display: block;
-      margin-top: 10px;
       margin-bottom: 6px;
     }
 
@@ -183,11 +186,15 @@
 
     <div class="centrado">
       <form id="encuesta-form">
-        <label>Tu Nombre:</label>
-        <input type="text" name="nombre" size="30">
+        <div class="campo">
+          <label for="nombre">Tu Nombre:</label>
+          <input id="nombre" type="text" name="nombre" size="30">
+        </div>
 
-        <label for="peso">Tu peso en KG para saber si eres apto para usar esta pagina:</label>
-        <input id="peso" type="text" name="clave" size="8">
+        <div class="campo">
+          <label for="peso">Tu peso en KG para saber si eres apto para usar esta pagina:</label>
+          <input id="peso" type="text" name="clave" size="8">
+        </div>
 
         <p>Preferencia sexual:</p>
         <div class="fila-opciones">
